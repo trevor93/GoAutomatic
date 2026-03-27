@@ -84,7 +84,7 @@ function LandingPage() {
           <div className="flex items-center justify-between h-20">
             <div className="flex-shrink-0">
               <img
-                src="/75a4cf79-34b5-4be3-a135-14e2f9aa1764.jpg"
+                src="/image.png"
                 alt="NAIM Agency Logo"
                 className="h-12 w-auto"
               />
@@ -319,64 +319,132 @@ function LandingPage() {
         </section>
 
         <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="font-serif text-5xl md:text-6xl text-charcoal mb-8">
-              Your Business Should Work While You Sleep.
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="font-serif text-4xl md:text-5xl text-charcoal mb-6">
+              Let's <span className="text-gold">Go Automatic</span>
             </h2>
 
-            <a
-              href={WHATSAPP_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 border-2 border-gold text-gold px-10 py-5 rounded-full text-xl font-medium hover:bg-gold hover:text-white transition-all duration-300 mb-8"
-            >
-              <MessageCircle size={28} />
-              WhatsApp for a Free 15-Min Discovery Call
-            </a>
-
-            <div className="space-y-3 text-charcoal mb-6">
-              <p className="text-lg">
-                <span className="font-medium">Tel:</span> +254 751 772 123
-              </p>
-              <p className="text-lg">
-                <span className="font-medium">Email:</span> salminabdalla93@gmail.com
-              </p>
-            </div>
-
-            <p className="text-sm text-gray-500">
-              No pressure. If you don't want this, we'll tell you exactly why you will need it.
+            <p className="text-lg text-charcoal mb-12">
+              Submit your details and forms below, then choose a booking time.
             </p>
+
+            <div className="bg-white rounded-3xl border-2 border-gold p-8 md:p-12 shadow-sm">
+              <form className="space-y-6">
+                <div>
+                  <label className="block text-left text-charcoal font-medium mb-3">
+                    Full Name <span className="text-gold">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Full Name"
+                    className="w-full px-6 py-3 border-2 border-gold rounded-xl focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 transition-all text-charcoal placeholder-gray-400"
+                    required
+                  />
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-left text-charcoal font-medium mb-3">
+                      Email <span className="text-gold">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      placeholder="Email"
+                      className="w-full px-6 py-3 border-2 border-gold rounded-xl focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 transition-all text-charcoal placeholder-gray-400"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-left text-charcoal font-medium mb-3">
+                      Phone <span className="text-gold">*</span>
+                    </label>
+                    <input
+                      type="tel"
+                      placeholder="Phone"
+                      className="w-full px-6 py-3 border-2 border-gold rounded-xl focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 transition-all text-charcoal placeholder-gray-400"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-left text-charcoal font-medium mb-3">
+                    Tell us about your project/Task/Business/Company
+                  </label>
+                  <textarea
+                    placeholder="Tell us what tasks you want to run automatically and How can we help your business, 1. Saving business time 2. Reducing Business Cost 3. Increasing business revenue"
+                    rows={5}
+                    className="w-full px-6 py-3 border-2 border-gold rounded-xl focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 transition-all text-charcoal placeholder-gray-400 resize-none"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-left text-charcoal font-medium mb-3">
+                    Upload all the tasks you want them to run automatic
+                  </label>
+                  <div className="border-2 border-gold rounded-xl p-4 flex items-center gap-4">
+                    <button
+                      type="button"
+                      className="bg-gold text-white px-6 py-2 rounded-full font-medium hover:bg-gold/90 transition-colors whitespace-nowrap"
+                    >
+                      Choose Files
+                    </button>
+                    <span className="text-gray-400">No file chosen</span>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-left text-charcoal font-medium mb-3">
+                    Consultation appointment time slot
+                  </label>
+                  <p className="text-left text-gray-600 text-sm mb-3">
+                    Please choose a preferred time slot that suits you. We will then contact you to confirm the closest available date.
+                  </p>
+                  <select className="w-full px-6 py-3 border-2 border-gold rounded-xl focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 transition-all text-charcoal appearance-none bg-white cursor-pointer">
+                    <option value="">Select a time slot</option>
+                    <option value="9am">9:00 AM - 10:00 AM</option>
+                    <option value="10am">10:00 AM - 11:00 AM</option>
+                    <option value="2pm">2:00 PM - 3:00 PM</option>
+                    <option value="3pm">3:00 PM - 4:00 PM</option>
+                    <option value="4pm">4:00 PM - 5:00 PM</option>
+                  </select>
+                </div>
+
+                <button
+                  type="submit"
+                  className="bg-gold text-white px-8 py-4 rounded-full font-medium text-lg hover:bg-gold/90 transition-colors"
+                >
+                  Submit
+                </button>
+              </form>
+            </div>
           </div>
         </section>
       </main>
 
-      <footer className="border-t border-gray-200 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
-            <div>
+      <footer className="bg-white border-t border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-16">
+            <div className="flex-shrink-0">
               <img
-                src="/75a4cf79-34b5-4be3-a135-14e2f9aa1764.jpg"
+                src="/image.png"
                 alt="NAIM Agency Logo"
-                className="h-10 w-auto mb-3"
+                className="h-24 w-24"
               />
-              <p className="text-gray-600 italic">Making business automatic, one client at a time.</p>
             </div>
 
-            <div className="flex flex-col md:items-center gap-3">
-              <a href="#" className="text-charcoal hover:text-gold transition-colors">How It Works</a>
-              <a href="#" className="text-charcoal hover:text-gold transition-colors">What You Get</a>
-              <a href="#" className="text-charcoal hover:text-gold transition-colors">FAQ</a>
-              <a href="#contact" className="text-charcoal hover:text-gold transition-colors">Contact</a>
-            </div>
-
-            <div className="flex flex-col md:items-end gap-2">
-              <p className="text-charcoal">+254 751 772 123</p>
-              <p className="text-charcoal">salminabdalla93@gmail.com</p>
+            <div className="flex flex-col gap-4 text-center md:text-left">
+              <p className="text-charcoal text-lg">
+                <span className="font-medium text-gold">WhatsApp:</span> <span className="text-gold">+254751772123</span>
+              </p>
+              <p className="text-charcoal text-lg">
+                <span className="font-medium text-gold">Email:</span> <span className="text-gold">salminabdalla93@gmail.com</span>
+              </p>
             </div>
           </div>
 
-          <div className="pt-8 border-t border-gray-200 text-center text-sm text-gray-500">
-            <p>© 2025 GoAutomatic by NAIM Agency. Kenya Data Protection Act Compliant.</p>
+          <div className="mt-16 pt-8 border-t border-gray-200 text-center">
+            <p className="text-gray-500 text-sm">© 2026 Naim Agency. All rights reserved. GlobalWide.</p>
           </div>
         </div>
       </footer>
