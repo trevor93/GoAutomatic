@@ -94,10 +94,12 @@ body {
 @layer components {
   .dark {
     color-scheme: dark;
+    background-color: #000000 !important;
   }
 
   .dark body {
-    @apply bg-slate-950 text-slate-100;
+    @apply bg-black text-white;
+    background-color: #000000 !important;
   }
 
   .dark h1,
@@ -113,7 +115,7 @@ body {
   .dark span,
   .dark li,
   .dark a {
-    @apply text-slate-100;
+    @apply text-white;
   }
 
   .dark .text-charcoal {
@@ -121,38 +123,39 @@ body {
   }
 
   .dark .text-gray-600 {
-    @apply text-slate-300;
+    @apply text-white;
   }
 
   .dark .text-gray-500 {
-    @apply text-slate-400;
+    @apply text-white/70;
   }
 
   .dark .text-gray-400 {
-    @apply text-slate-500;
+    @apply text-white/50;
   }
 
   .dark .bg-white {
-    @apply bg-slate-900;
+    @apply bg-black;
   }
 
   .dark .bg-gray-50 {
-    @apply bg-slate-800;
+    @apply bg-black;
   }
 
   .dark .border-gray-100,
   .dark .border-gray-200 {
-    @apply border-slate-700;
+    border-color: rgba(201, 169, 97, 0.3) !important;
   }
 
   .dark .hover\:bg-gray-50:hover {
-    @apply bg-slate-800;
+    @apply bg-gray-900;
   }
 
   .dark input,
   .dark textarea,
   .dark select {
-    @apply bg-slate-900 text-white border-slate-600;
+    @apply bg-black text-white;
+    border-color: #C9A961 !important;
   }
 
   .dark input:focus,
@@ -162,6 +165,16 @@ body {
   }
 
   .dark .goog-te-combo {
-    @apply bg-slate-900 text-white border-slate-600;
+    @apply bg-black text-white;
+    border-color: #C9A961 !important;
+  }
+
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+
+  .dark img {
+    filter: brightness(1.1) contrast(1.05);
   }
 }
