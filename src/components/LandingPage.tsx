@@ -1,4 +1,4 @@
-import { MessageCircle, Phone, FileText, Clipboard, GraduationCap, Shield, ChevronDown } from 'lucide-react';
+import { MessageCircle, Phone, FileText, Clipboard, GraduationCap, Shield, ChevronDown, Globe } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 const WHATSAPP_LINK = "https://wa.me/254751772123?text=Hi%20NAIM%20Agency%2C%20I%20want%20to%20automate%20my%20business.";
@@ -28,6 +28,7 @@ function AccordionItem({ question, answer, isOpen, onToggle }: { question: strin
 function LandingPage() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(1);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [showLanguageMenu, setShowLanguageMenu] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,6 +53,103 @@ function LandingPage() {
     document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
+  }, []);
+
+  const languages = [
+    { code: 'en', name: 'English' },
+    { code: 'es', name: 'Español (Spanish)' },
+    { code: 'fr', name: 'Français (French)' },
+    { code: 'de', name: 'Deutsch (German)' },
+    { code: 'it', name: 'Italiano (Italian)' },
+    { code: 'pt', name: 'Português (Portuguese)' },
+    { code: 'ru', name: 'Русский (Russian)' },
+    { code: 'ja', name: '日本語 (Japanese)' },
+    { code: 'zh-CN', name: '中文简体 (Chinese Simplified)' },
+    { code: 'zh-TW', name: '中文繁體 (Chinese Traditional)' },
+    { code: 'ko', name: '한국어 (Korean)' },
+    { code: 'ar', name: 'العربية (Arabic)' },
+    { code: 'hi', name: 'हिन्दी (Hindi)' },
+    { code: 'sw', name: 'Kiswahili (Swahili)' },
+    { code: 'yo', name: 'Yorùbá (Yoruba)' },
+    { code: 'ha', name: 'Hausa' },
+    { code: 'am', name: 'አማርኛ (Amharic)' },
+    { code: 'so', name: 'Soomaali (Somali)' },
+    { code: 'zu', name: 'isiZulu' },
+    { code: 'xh', name: 'isiXhosa' },
+    { code: 'nl', name: 'Nederlands (Dutch)' },
+    { code: 'pl', name: 'Polski (Polish)' },
+    { code: 'tr', name: 'Türkçe (Turkish)' },
+    { code: 'el', name: 'Ελληνικά (Greek)' },
+    { code: 'sv', name: 'Svenska (Swedish)' },
+    { code: 'no', name: 'Norsk (Norwegian)' },
+    { code: 'da', name: 'Dansk (Danish)' },
+    { code: 'fi', name: 'Suomi (Finnish)' },
+    { code: 'cs', name: 'Čeština (Czech)' },
+    { code: 'hu', name: 'Magyar (Hungarian)' },
+    { code: 'ro', name: 'Română (Romanian)' },
+    { code: 'uk', name: 'Українська (Ukrainian)' },
+    { code: 'he', name: 'עברית (Hebrew)' },
+    { code: 'th', name: 'ไทย (Thai)' },
+    { code: 'vi', name: 'Tiếng Việt (Vietnamese)' },
+    { code: 'id', name: 'Bahasa Indonesia' },
+    { code: 'tl', name: 'Tagalog (Filipino)' },
+    { code: 'bn', name: 'বাংলা (Bengali)' },
+    { code: 'ur', name: 'اردو (Urdu)' },
+    { code: 'pa', name: 'ਪੰਜਾਬੀ (Punjabi)' },
+  ];
+
+  const handleLanguageChange = (languageCode: string) => {
+    const element = document.querySelector('html');
+    if (element) {
+      element.setAttribute('lang', languageCode);
+    }
+
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.innerHTML = `
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+          pageLanguage: 'en',
+          includedLanguages: 'af,sq,am,ar,hy,az,eu,be,bn,bs,bg,ca,zh-CN,zh-TW,co,hr,cs,da,nl,en,eo,et,fi,fr,fy,gl,ka,de,el,gu,ht,ha,haw,he,hi,hu,is,ig,id,ga,it,ja,jv,kn,kk,km,rw,ko,ku,ky,lo,la,lv,lt,lb,mk,mg,ms,ml,mt,mi,mr,mn,my,ne,no,ny,or,ps,fa,pl,pt,pa,ro,ru,sm,gd,sr,st,sn,sd,si,sk,sl,so,es,su,sw,sv,tl,tg,ta,tt,te,th,tr,tk,uk,ur,ug,uz,vi,cy,xh,yi,yo,zu',
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+          autoDisplay: false
+        }, 'google_translate_element');
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', googleTranslateElementInit);
+      } else {
+        googleTranslateElementInit();
+      }
+    `;
+    document.body.appendChild(script);
+
+    if (languageCode !== 'en') {
+      setTimeout(() => {
+        const combobox = document.querySelector('select.goog-te-combo') as HTMLSelectElement;
+        if (combobox) {
+          combobox.value = languageCode;
+          combobox.dispatchEvent(new Event('change'));
+        }
+      }, 500);
+    }
+
+    setShowLanguageMenu(false);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (!target.closest('.language-selector')) {
+        setShowLanguageMenu(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
   }, []);
 
   const faqs = [
@@ -97,6 +195,31 @@ function LandingPage() {
               <a href="#contact" className="text-charcoal hover:text-gold transition-colors">
                 Contact
               </a>
+              <div className="relative language-selector">
+                <button
+                  onClick={() => setShowLanguageMenu(!showLanguageMenu)}
+                  className="text-charcoal hover:text-gold transition-colors p-2 flex items-center gap-1"
+                  aria-label="Change Language"
+                  title="Translate Page"
+                >
+                  <Globe size={20} />
+                </button>
+                {showLanguageMenu && (
+                  <div className="absolute right-0 mt-2 w-64 bg-white border border-gold rounded-lg shadow-lg z-50 max-h-96 overflow-y-auto">
+                    <div className="p-2">
+                      {languages.map((lang) => (
+                        <button
+                          key={lang.code}
+                          onClick={() => handleLanguageChange(lang.code)}
+                          className="w-full text-left px-4 py-3 hover:bg-gold-tint text-charcoal hover:text-gold transition-colors text-sm border-b border-gray-100 last:border-0"
+                        >
+                          {lang.name}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
               <a
                 href={WHATSAPP_LINK}
                 target="_blank"
@@ -106,7 +229,32 @@ function LandingPage() {
                 Book Appointment
               </a>
             </div>
-            <div className="md:hidden">
+            <div className="md:hidden flex items-center gap-2">
+              <div className="relative language-selector">
+                <button
+                  onClick={() => setShowLanguageMenu(!showLanguageMenu)}
+                  className="text-charcoal hover:text-gold transition-colors p-2"
+                  aria-label="Change Language"
+                  title="Translate Page"
+                >
+                  <Globe size={18} />
+                </button>
+                {showLanguageMenu && (
+                  <div className="absolute right-0 mt-2 w-56 bg-white border border-gold rounded-lg shadow-lg z-50 max-h-80 overflow-y-auto">
+                    <div className="p-2">
+                      {languages.map((lang) => (
+                        <button
+                          key={lang.code}
+                          onClick={() => handleLanguageChange(lang.code)}
+                          className="w-full text-left px-4 py-3 hover:bg-gold-tint text-charcoal hover:text-gold transition-colors text-sm border-b border-gray-100 last:border-0"
+                        >
+                          {lang.name}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
               <a
                 href={WHATSAPP_LINK}
                 target="_blank"
