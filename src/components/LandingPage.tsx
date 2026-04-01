@@ -1,7 +1,7 @@
 import { MessageCircle, Phone, FileText, Clipboard, GraduationCap, Shield, ChevronDown, Globe, Moon, Sun } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
-const WHATSAPP_LINK = "https://wa.me/254751772123?text=Hi%20NAIM%20Agency%2C%20I%20want%20to%20automate%20my%20business.";
+const WHATSAPP_LINK = "https://wa.me/254769613396?text=Hi%20NAIM%20Agency%2C%20I%20want%20to%20automate%20my%20business.";
 
 declare global {
   interface Window {
@@ -50,6 +50,18 @@ function LandingPage() {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
+    const getCookie = (name: string) => {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop()?.split(';').shift();
+      return null;
+    };
+
+    const currentLang = getCookie('googtrans');
+    if (currentLang && currentLang !== '/en/en' && !sessionStorage.getItem('lang_checked')) {
+      sessionStorage.setItem('lang_checked', 'true');
+    }
+
     const savedDarkMode = localStorage.getItem('darkMode') === 'true';
     setIsDarkMode(savedDarkMode);
     if (savedDarkMode) {
@@ -65,28 +77,10 @@ function LandingPage() {
       document.documentElement.classList.add('dark');
       document.documentElement.style.backgroundColor = '#000000';
       document.body.style.backgroundColor = '#000000';
-      const darkFavicon = document.createElement('link');
-      darkFavicon.rel = 'icon';
-      darkFavicon.type = 'image/svg+xml';
-      darkFavicon.href = `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='none' stroke='%23C9A961' stroke-width='3'/><circle cx='50' cy='50' r='45' fill='%23000000'/><text x='50' y='60' font-family='serif' font-size='45' font-weight='bold' fill='%23C9A961' text-anchor='middle' font-style='italic'>N</text></svg>`;
-      const oldFavicon = document.querySelector('link[rel="icon"]');
-      if (oldFavicon) {
-        oldFavicon.parentNode?.removeChild(oldFavicon);
-      }
-      document.head.appendChild(darkFavicon);
     } else {
       document.documentElement.classList.remove('dark');
       document.documentElement.style.backgroundColor = '#ffffff';
       document.body.style.backgroundColor = '#ffffff';
-      const lightFavicon = document.createElement('link');
-      lightFavicon.rel = 'icon';
-      lightFavicon.type = 'image/svg+xml';
-      lightFavicon.href = `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='none' stroke='%23C9A961' stroke-width='3'/><circle cx='50' cy='50' r='45' fill='%23ffffff'/><text x='50' y='60' font-family='serif' font-size='45' font-weight='bold' fill='%23C9A961' text-anchor='middle' font-style='italic'>N</text></svg>`;
-      const oldFavicon = document.querySelector('link[rel="icon"]');
-      if (oldFavicon) {
-        oldFavicon.parentNode?.removeChild(oldFavicon);
-      }
-      document.head.appendChild(lightFavicon);
     }
   }, [isDarkMode]);
 
@@ -322,7 +316,7 @@ function LandingPage() {
           <div className="flex items-center justify-between h-20">
             <div className="flex-shrink-0">
               <img
-                src="/image.png"
+                src="/526d8635-4b4e-4d01-acd9-44b50bc8c7c9-removebg-preview.png"
                 alt="NAIM Agency Logo"
                 className="h-12 w-auto"
               />
@@ -735,36 +729,58 @@ function LandingPage() {
 
       <footer className={`${isDarkMode ? 'bg-black border-gold/30' : 'bg-white border-gray-200'} border-t`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-24">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-16">
             <div className="flex-shrink-0">
               <img
-                src="/image.png"
+                src="/526d8635-4b4e-4d01-acd9-44b50bc8c7c9-removebg-preview.png"
                 alt="NAIM Agency Logo"
-                className="h-24 w-24"
+                className="h-32 w-auto"
               />
             </div>
 
-            <div className="flex flex-col gap-4 text-left">
-              <p className={isDarkMode ? 'text-white text-lg' : 'text-charcoal text-lg'}>
-                <span className="font-medium text-gold">WhatsApp:</span>{' '}
-                <a
-                  href={WHATSAPP_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gold hover:underline transition-all"
-                >
-                  +254751772123
-                </a>
+            <div className="flex flex-col gap-4">
+              <p className={`text-lg ${isDarkMode ? 'text-white' : 'text-charcoal'}`}>
+                <span className="font-semibold text-gold">Naim Agency - Digital Services Division of Naim Investments</span>
               </p>
-              <p className={isDarkMode ? 'text-white text-lg' : 'text-charcoal text-lg'}>
-                <span className="font-medium text-gold">Email:</span>{' '}
-                <a
-                  href="mailto:salminabdalla93@gmail.com"
-                  className="text-gold hover:underline transition-all"
-                >
-                  salminabdalla93@gmail.com
-                </a>
-              </p>
+              <div className="space-y-2">
+                <p className={isDarkMode ? 'text-white' : 'text-charcoal'}>
+                  <span className="font-medium">Salmin Mohamed</span>
+                </p>
+                <p className={`text-sm ${isDarkMode ? 'text-white/80' : 'text-gray-600'}`}>
+                  Marketing Director
+                </p>
+                <div className="flex flex-col gap-2 mt-3">
+                  <p className={isDarkMode ? 'text-white' : 'text-charcoal'}>
+                    <span className="text-gold">📞</span>{' '}
+                    <a
+                      href="tel:+254769613396"
+                      className="text-gold hover:underline transition-all"
+                    >
+                      +27 69 613 3396
+                    </a>
+                  </p>
+                  <p className={isDarkMode ? 'text-white' : 'text-charcoal'}>
+                    <span className="text-gold">💬</span>{' '}
+                    <a
+                      href={WHATSAPP_LINK}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gold hover:underline transition-all"
+                    >
+                      +27 69 613 3396
+                    </a>
+                  </p>
+                  <p className={isDarkMode ? 'text-white' : 'text-charcoal'}>
+                    <span className="text-gold">✉️</span>{' '}
+                    <a
+                      href="mailto:marketing@naiminvestments.com"
+                      className="text-gold hover:underline transition-all"
+                    >
+                      marketing@naiminvestments.com
+                    </a>
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 
